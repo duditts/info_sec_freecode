@@ -3,14 +3,22 @@ const helmet = require('helmet');
 const app = express();
 
 const PORT = process.env.PORT || 3030;
+let ninetyDaysInSeconds = 90*24*60*60;
+
 // Hide "X-Powered-By: Express"
 app.use(helmet.hidePoweredBy());
+//
 app.use(helmet.xssFilter());
-
+//
 app.use(helmet.ieNoOpen());
 // Prevent clickjacking
 app.use(helmet.frameguard({ action: 'deny' }));
 
+//maxAge: timeInSeconds, force: true}. You can create a variable ninetyDaysInSeconds = 90*24*60*60; to use for the timeInSeconds.
+app.use(helmet.hsts({
+  maxAge: timeInSeconds, 
+  force: true               // request inclusion in browser preload list
+}));
 app.use(helmet.noSniff());
 
 
