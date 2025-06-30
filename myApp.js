@@ -26,13 +26,13 @@ app.use(helmet.contentSecurityPolicy({
   useDefaults: true,
   directives: {
     defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
-    styleSrc: ["'self'", "https://fonts.googleapis.com"],
-    fontSrc: ["'self'", "https://fonts.gstatic.com"],
-    imgSrc: ["'self'", "data:"],
-    connectSrc: ["'self'"],
-    objectSrc: ["'none'"],
-    upgradeInsecureRequests: []
+    scriptSrc: ["'self'", 'trusted-cdn.com'],
+//    styleSrc: ["'self'", "https://fonts.googleapis.com"],
+//    fontSrc: ["'self'", "https://fonts.gstatic.com"],
+//    imgSrc: ["'self'", "data:"],
+//    connectSrc: ["'self'"],
+//    objectSrc: ["'none'"],
+//    upgradeInsecureRequests: []
   }
 }));
 
