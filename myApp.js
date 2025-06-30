@@ -21,6 +21,7 @@ app.use(helmet.hsts({
 }));
 app.use(helmet.noSniff());
 app.use(helmet.dnsPrefetchControl());
+app.use(helmet.noCache());
 
 
 
