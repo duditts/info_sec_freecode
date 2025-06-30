@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3030;
 app.use(helmet.hidePoweredBy());
 app.use(helmet.xssFilter());
 
+app.use(helmet.ieNoOpen());
 // Prevent clickjacking
 app.use(helmet.frameguard({ action: 'deny' }));
 
