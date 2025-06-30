@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3030;
 // Hide "X-Powered-By: Express"
 app.use(helmet.hidePoweredBy());
-app.use(helmet.xXssProtection());
+app.use(helmet.xssFilter());
 
 // Prevent clickjacking
 app.use(helmet.frameguard({ action: 'deny' }));
