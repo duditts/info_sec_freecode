@@ -22,7 +22,19 @@ app.use(helmet.hsts({
 app.use(helmet.noSniff());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.noCache());
-
+app.use(helmet.contentSecurityPolicy({
+  useDefaults: true,
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
+    styleSrc: ["'self'", "https://fonts.googleapis.com"],
+    fontSrc: ["'self'", "https://fonts.gstatic.com"],
+    imgSrc: ["'self'", "data:"],
+    connectSrc: ["'self'"],
+    objectSrc: ["'none'"],
+    upgradeInsecureRequests: []
+  }
+}));
 
 
 
