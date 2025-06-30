@@ -20,7 +20,7 @@ app.use(helmet.hsts({
   force: true               // request inclusion in browser preload list
 }));
 app.use(helmet.noSniff());
-
+app.use(helmet.dnsPrefetchControl());
 
 
 
