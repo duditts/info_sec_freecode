@@ -16,7 +16,7 @@ app.use(helmet.frameguard({ action: 'deny' }));
 
 //maxAge: timeInSeconds, force: true}. You can create a variable ninetyDaysInSeconds = 90*24*60*60; to use for the timeInSeconds.
 app.use(helmet.hsts({
-  maxAge: timeInSeconds, 
+  maxAge: ninetyDaysInSeconds, 
   force: true               // request inclusion in browser preload list
 }));
 app.use(helmet.noSniff());
