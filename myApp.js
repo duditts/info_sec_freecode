@@ -12,8 +12,6 @@ app.use(helmet.xssFilter());
 //
 app.use(helmet.ieNoOpen());
 // Prevent clickjacking
-app.use(helmet.frameguard({ action: 'deny' }));
-
 //maxAge: timeInSeconds, force: true}. You can create a variable ninetyDaysInSeconds = 90*24*60*60; to use for the timeInSeconds.
 app.use(helmet.hsts({
   maxAge: ninetyDaysInSeconds, 
@@ -22,21 +20,18 @@ app.use(helmet.hsts({
 app.use(helmet.noSniff());
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.noCache());
-app.use(helmet.contentSecurityPolicy({
-  useDefaults: true,
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", 'trusted-cdn.com']
-//["'self'", 'trusted-cdn.com']
-//    styleSrc: ["'self'", "https://fonts.googleapis.com"],
-//    fontSrc: ["'self'", "https://fonts.gstatic.com"],
-//    imgSrc: ["'self'", "data:"],
-//    connectSrc: ["'self'"],
-//    objectSrc: ["'none'"],
-//    upgradeInsecureRequests: []
-  }
-}));
-
+app.use(helmet({
+  frameguard: {         // configure
+    action: 'deny'
+  },
+  contentSecurityPolicy: {    // enable and configure
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ['style.com'],
+    }
+  },
+  dnsPrefetchControl: false     // disable
+}))
 
 
 
