@@ -3,17 +3,11 @@ const helmet = require('helmet');
 const app = express();
 
 const PORT = process.env.PORT || 3030;
-app.use(helmet.frameguard({ action: "deny" }));
-// your code
+// Hide "X-Powered-By: Express"
+app.use(helmet.hidePoweredBy());
 
-app.use(
-  helmet({
-    xPoweredBy: false,
-    xFrameOptions: { action: "deny" },
-  }),
-);
-
-
+// Prevent clickjacking
+app.use(helmet.frameguard({ action: 'deny' }));
 
 
 
