@@ -10,7 +10,7 @@ app.use(helmet.xssFilter());
 // Prevent clickjacking
 app.use(helmet.frameguard({ action: 'deny' }));
 
-
+app.use(helmet.noSniff());
 
 
 
